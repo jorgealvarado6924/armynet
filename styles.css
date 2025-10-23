@@ -1,0 +1,780 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 1.5;
+    color: #535e2c;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: linear-gradient(135deg, #fafafa 0%, #d8d2a9 50%, #9a9d4c 100%);
+    background-attachment: fixed;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+.heading {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 50px 0px;
+}
+
+:root {
+    --color: #263B1E;
+    --padding: 20px 10%;
+    --tran: all 0.3s ease-in-out;
+
+}
+
+
+.nombreUsuario {
+    text-transform: uppercase;
+    background: #8F8649;
+    background: #8F8649;
+    background: radial-gradient(circle, rgba(143, 134, 73, 1) 0%, rgba(154, 157, 76, 1) 61%);
+    border-radius: 5px;
+    padding: 8px 12px;
+    color: var(--color);
+    font-family: "Titillium Web", sans-serif;
+    font-style: normal;
+}
+
+
+/* Menú de Navegación */
+
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+}
+
+.logo {
+    margin: 0;
+    color: #535e2c;
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+.navigation a {
+    position: relative;
+    font-size: 1.3em;
+    color: #a38600;
+    text-decoration: none;
+    font-weight: 700;
+    margin-left: 40px;
+}
+
+
+
+.navigation a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #6e6437;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.navigation a:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+/* .navigation a:hover {
+    color: #1D631D;
+} */
+
+#loginInicio,
+.btn {
+    padding: 10px 20px;
+    width: 40%;
+    color: #fff;
+    background: var(--color) !important;
+    /* background: linear-gradient(90deg, rgba(35, 82, 21, 1) 0%, rgba(53, 110, 50, 1) 100%); */
+    border-radius: 20px;
+    text-transform: uppercase;
+    text-align: center;
+
+
+}
+
+.btn:hover {
+    color: #6c744c;
+}
+
+nav .btn {
+    width: 200px;
+}
+
+#loginInicio:hover,
+.btn:hover {
+    box-shadow: inset 0px 0px 1px 1px #829B5A;
+    color: #6c744c !important;
+    text-decoration-line: none;
+}
+
+/* **************************************************/
+
+/* Boton Subir  */
+
+#subirboton {
+    width: 70px;
+    height: 70px;
+    color: #737c3c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    position: fixed;
+    bottom: 20px;
+    cursor: pointer;
+    display: none;
+    bottom: 0;
+    right: 0;
+
+
+}
+
+
+
+
+.banner {
+    display: flex;
+    /* flex-direction: row-reverse; */
+    flex-wrap: wrap;
+    padding: 20px 5%;
+}
+
+.bannerImg img {
+    mask-image: linear-gradient(white 70%,
+            transparent);
+}
+
+.bannerThought {
+    width: 40%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.bannerThought h1 {
+    text-transform: uppercase;
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.bannerThought h1 span {
+    color: var(--color);
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+
+}
+
+.bannerThought p {
+    margin-bottom: 10px;
+}
+
+.bannerImg {
+    width: 60%;
+    padding: 10px;
+    text-align: center;
+    /* background-color: #263B1E; */
+    transition: var(--tran);
+}
+
+.bannerImg img {
+    width: 400px;
+
+}
+
+
+
+/* Sobre Nosotros */
+
+.aboutUs {
+    display: flex;
+    flex-wrap: wrap;
+    padding: var(--padding);
+
+}
+
+.aboutImg {
+    padding: 10px;
+    width: 40%;
+    text-align: center;
+
+}
+
+.aboutImg img {
+    margin-left: -100px;
+}
+
+
+
+.aboutContent {
+    padding: 10px;
+    width: 60%;
+
+}
+
+.aboutContent p span {
+    color: var(--color);
+    font-size: 2rem;
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Blogs Recientes */
+
+.recentBlogs {
+    background-color: var(--color);
+    padding: var(--padding);
+
+}
+
+.blogsDiv {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.individualBlogReciente {
+    width: 30%;
+    background-color: #b0a059;
+    height: 100%;
+    margin: 20px;
+    border-radius: 10px;
+
+}
+
+.individualBlogReciente a {
+    color: #0c160b;
+}
+
+.individualBlogReciente .btn {
+    color: #b0a059;
+}
+
+.individualBlogReciente .btn:hover {
+    color: #737c3c;
+}
+
+.individualBlogReciente img {
+    width: 100%;
+    height: 30vh;
+    border-radius: 10px 10px 0 0;
+}
+
+.blogRecienteContenido {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.blogRecienteContenido h4,
+.blogRecienteContenido p,
+.blogRecienteContenido b {
+    margin-bottom: 5px;
+}
+
+.blogRecienteContenido h4,
+.blogRecienteContenido b {
+    font-weight: bold;
+}
+
+
+/* Contacto */
+
+#sendForm {
+    text-align: center;
+    width: 40%;
+    padding: 20px;
+}
+
+.contacto {
+    display: flex;
+    flex-wrap: wrap;
+    padding: var(--padding);
+    align-items: center;
+}
+
+.contactoImg {
+    text-align: center;
+    width: 40%;
+    padding: 20px;
+
+}
+
+.contactoImg img {
+    border-radius: 20px;
+    width: 82%;
+
+}
+
+.contacto form {
+    box-shadow: 0px 0px 3px 3px #b0a059;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    padding: 10px;
+}
+
+.contacto form h2 {
+    text-align: center;
+}
+
+.formularioDireccion {
+    display: flex;
+    padding: 10px;
+
+}
+
+.formularioDireccion div {
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 33%;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: inset 0px 0px 3px 3px #9a9d4c;
+}
+
+.formularioDireccion div i {
+    color: var(--color);
+    margin-bottom: 10px;
+}
+
+.formularioDireccion div p span {
+    color: var(--color);
+    font-size: 15px;
+}
+
+.formField {
+    margin: 15px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--color);
+    background: transparent;
+    font-size: 15px;
+}
+
+.formBtn input {
+    outline: none;
+    border: none;
+    width: 200px;
+
+}
+
+.formBtn {
+    padding-left: 165px;
+
+}
+
+/* Footer */
+
+footer {
+    padding: var(--padding);
+    background-color: var(--color);
+    color: #b0a059;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+footer ul a {
+    padding: 6px 10px;
+    margin: 0px 10px;
+    background-color: #b0a059;
+    color: var(--color);
+    border-radius: 20px;
+    transition: var(--tran);
+}
+
+footer ul a:hover {
+    box-shadow: inset 0px 0px 1px 1px gray;
+    color: gray;
+}
+
+/* Navegación de Categorías del Blog*/
+.blogNav {
+    display: flex;
+    flex-wrap: wrap;
+    padding: var(--padding);
+}
+
+.blogNav span {
+    margin-right: 20px;
+    padding: 10px 20px;
+    background-color: #bac784;
+    border-radius: 20px;
+    transition: var(--tran);
+    cursor: pointer;
+}
+
+.activeBlog,
+.blogNav span:hover {
+    color: #fff;
+    background-color: var(--color) !important;
+}
+
+/* Blogs */
+
+.blogs {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10%;
+}
+
+.blogIndividual {
+    margin: 20px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color:#fafafa61;
+    box-shadow: 0px 10px 10px -9px lightslategray;
+    border-radius: 10px;
+}
+
+.blogIndividual a {
+    color: #30391d;
+}
+
+.blogIndividual h3 {
+    font-weight: bold;
+}
+
+.blogIndividual .btn {
+    color: white;
+}
+
+.blogIndividual .btn:hover {
+    transition: var(--tran);
+    color: #6c744c;
+}
+
+.blogImg {
+    width: 30%;
+    transform: translate(10px);
+}
+
+.blogImg img {
+    width: 100%;
+    transform: scale(1, 0.9);
+    border-radius: 10px;
+}
+
+.contenidoBlog {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.contenidoBlog h3,
+.contenidoBlog p {
+    margin-bottom: 5px;
+}
+
+.contenidoBlog b {
+    margin-bottom: 10px;
+}
+
+.contenidoBlog .btn {
+    margin-top: 10px;
+}
+
+.contenidoBlog b {
+    color: var(--color);
+}
+
+.hideClass {
+    display: none;
+}
+
+div #category{
+    background: beige;
+    font-size: 16px;
+    margin-bottom: 3%;
+}
+
+/* Blog Details */
+
+.detailsBlog {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 10%;
+}
+
+.blogDetailsDiv {
+    width: 70%;
+    background-color: #b0a059;
+    border-radius: 5px;
+}
+
+.blogDetailsDivContent {
+    padding: 20px;
+}
+
+.blogDetailsDivContent h3,
+.blogDetailsDivContent b {
+    margin-bottom: 5px;
+}
+
+.blogDetailsDivContent b {
+    color: var(--color);
+}
+
+.blogDetailsDiv img {
+    border: 2px solid;
+    width: 100%;
+    height: 99vh;
+    border-radius: 5px;
+}
+
+.blogCategory {
+    display: flex;
+    background-color: #b0a059;
+    flex-direction: column;
+    width: 25%;
+    margin-left: 5%;
+    padding: 20px;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.blogCategory h4 {
+    color: var(--color);
+}
+
+.blogCategory a {
+    color:#30391d;
+    margin: 10px 0px;
+    padding: 5px;
+    border-bottom: 1px solid var(--color);
+}
+
+.blogCategory a:hover {
+    color: #437b20;
+}
+
+.updatePost {
+    display: flex;
+    padding: inherit;
+}
+
+.updatePost a {
+    color: #b0a059;
+    border: none;
+    outline: none;
+    transition: var(--tran);
+    text-transform: uppercase;
+}
+
+.updatePost a:hover {
+    color: var(--color);
+}
+
+
+/* Comentarios */
+
+.comentarios {
+    padding: 20px 10%;
+}
+
+.individualComment {
+    margin: 20px 0px;
+    width: 40%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fafafa;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.commentImg {
+    width: 20%;
+}
+
+.commentImg img {
+    width: 100%;
+    border-radius: 40%;
+}
+
+.commentContent {
+    width: 80%;
+    padding: 10px;
+}
+
+.commentContent b {
+    font-weight: bold;
+}
+
+.commentLeft {
+    float: inherit;
+}
+
+.commentRight {
+    float: right;
+}
+
+/* Formulario de Comentario */
+
+.commentForm {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 10%;
+}
+
+.commentForm input,
+.commentForm textarea {
+    width: 30%;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.commentForm textarea {
+    width: 80%;
+}
+
+
+/* Añadir Posts */
+
+.createPost {
+    display: flex;
+    flex-wrap: wrap;
+    padding: var(--padding);
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.createPost form {
+    width: 100%;
+    box-shadow: 0px 0px 3px 3px #b0a059;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    padding: 10px;
+    margin-left: 20%;
+}
+
+#image {
+    align-items: center;
+}
+
+.createPost input {
+    width: 100%;
+    height: 50px;
+    border: 1.7px solid #686634;
+    margin: 15px 0;
+    background: transparent;
+    font-size: medium;
+    border-radius: 5px;
+
+}
+
+.createPost textarea {
+    border-radius: 5px;
+    background: transparent;
+    border: 2px solid black;
+    width: 100%;
+    font-size: 16px;
+}
+
+.addpostField {
+    border: none;
+}
+
+.addpostField label {
+    margin-bottom: 15px;
+
+    font-weight: 700;
+}
+
+.addpostField .customFile {
+    border: none;
+}
+
+
+
+.customFile {
+    color: #535e2c;
+    font-weight: bold;
+}
+
+.customFile::file-selector-button {
+    background: #263B1E;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.customFile::file-selector-button:hover {
+    background: #8F8649;
+    color: #263B1E;
+}
+
+
+
+
+form label{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+
+
+
+/* Registro Usuario */
+.alerta {
+    text-align: center;
+    color: rgb(208, 21, 21);
+}
+
+.success {
+    text-align: center;
+    color: var(--color);
+}
+
+

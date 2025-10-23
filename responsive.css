@@ -1,0 +1,178 @@
+@media screen and (min-device-width:768px) and (max-device-width:1024px) {
+    .banner {
+        flex-direction: column-reverse;
+    }
+
+    .bannerImg,
+    .aboutImg,
+    .aboutContent,
+    .bannerThought,
+    .contacto form {
+        width: 100%;
+        /* align-items: center; */
+    }
+
+    .aboutImg img {
+        margin-left: 0px;
+    }
+
+    .individualBlogReciente {
+        width: 42%;
+    }
+
+    .contactoImg {
+        display: none;
+
+    }
+
+    /* .blogImg img{
+        padding-top: 40px;
+    } */
+    .blogImg img {
+        height: 100%;
+    }
+
+    .individualComment {
+        width: 50%;
+    }
+
+    .blogDetailsDiv img {
+
+        height: 95vh;
+    }
+}
+
+
+@media screen and (min-device-width:354px) and (max-device-width:764px) {
+    .navigation {
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+
+    .navigation a {
+        margin-top: 5px;
+    }
+
+    /* #loginInicio{
+        padding: 5px;
+    } */
+
+    .banner {
+        flex-direction: column-reverse;
+    }
+
+    .bannerImg,
+    .aboutImg,
+    .aboutContent,
+    .bannerThought,
+    .contacto form {
+        width: 100%;
+    }
+
+    .bannerImg img,
+    .aboutImg img {
+        width: 100%;
+    }
+
+    .aboutImg img {
+        margin-left: 0px;
+    }
+
+    .contactoImg {
+        margin-left: 100px;
+        display: none;
+    }
+
+    .btn {
+        margin: 10px;
+    }
+
+    .contactoImg img {
+
+        width: 100%;
+    }
+
+    .individualBlogReciente {
+        width: 100%;
+    }
+
+    .formularioDireccion {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .formularioDireccion div {
+        width: 100%;
+        padding: 20px 0px;
+        margin-left: 0px;
+    }
+
+    .formBtn{
+    padding-left: 30px;
+}
+
+
+    footer {
+        align-items: center;
+        flex-direction: column;
+    }
+
+    footer ul {
+        margin-top: 20px;
+    }
+
+    .blogNav span {
+        margin-top: 15px;
+    }
+
+    .blogImg {
+        width: 100%;
+    }
+
+    .blogs {
+        margin: -28px -6%;
+    }
+
+    .blogImg img {
+        width: 90%;
+        transform: translate(5px);
+        margin-top: 30px;
+    }
+
+    .blogContent {
+        width: 100%;
+    }
+
+    .contenidoBlog {
+        width: 100%;
+        text-align: justify;
+    }
+
+    .blogDetailsDiv {
+        width: 100%;
+    }
+
+    .blogCategory {
+        width: 100%;
+        margin: 20px 0px;
+    }
+
+    .individualComment {
+        width: 90%;
+    }
+
+    .commentForm {
+        flex-direction: column;
+    }
+
+    .commentForm input,
+    .commentForm textarea {
+        margin-top: 10px;
+        padding: 10px;
+    }
+
+    .commentForm textarea {
+        width: 100%;
+    }
+}
