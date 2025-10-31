@@ -336,6 +336,9 @@ header a {
 }
 
 
+
+/* Responsive login y registro */
+
 @media screen and (min-device-width:1024px) and (max-device-width:768px) {
 
     header {

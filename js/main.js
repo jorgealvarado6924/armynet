@@ -1,5 +1,3 @@
-
-
 let upboton=document.getElementById("subirboton");
 upboton.addEventListener("click", function(){
     document.documentElement.scrollTop=0;   
