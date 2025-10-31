@@ -129,7 +129,7 @@ if (!isset($_SESSION["user_id"])) {
                 <input type="Submit" class="btn" value="Enviar" name="contactSubmit">
                 <input type="Reset" class="btn" value="Reset" name="reset">
                 <?php
-                // Conexion con formulario de contacto
+                // Conexión con formulario de contacto
                 if (isset($_POST['contactSubmit'])) {
                     $name = $_POST['name'];
                     $email = $_POST['email'];
@@ -137,7 +137,7 @@ if (!isset($_SESSION["user_id"])) {
                     $subject = $_POST['subject'];
                     $message = $_POST['message'];
 
-                    // Esto hace el formulario mucho más seguro, evitando inyeccion de sql
+                    // Esto hace el formulario mucho más seguro, evitando inyección de sql
                     $stmt = $conexion->prepare("INSERT INTO contact (name, phone, email, subject, message) VALUES (?, ?, ?, ?, ?)");
                     $stmt->bind_param("sssss", $name, $phone, $email, $subject, $message);
                     $stmt->execute();
@@ -152,7 +152,7 @@ if (!isset($_SESSION["user_id"])) {
     <!-- Footer -->
     <?php include('particiones/footer.php'); ?>
     <!-- *********************** -->
-    <script src="js/main.js"></script>
+    <script src="js/boton_subir.js"></script>
 </body>
 
 </html>

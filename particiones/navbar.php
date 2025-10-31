@@ -11,7 +11,7 @@ if (!isset($_SESSION["user_id"])) {
     <a href="index.php">Inicio</a>
     <a href="index.php#sobremi">Sobre Nosotros</a>
     <a href="blog.php">Blog</a>
-    <a href="add_posts.php">Crea tu Blog</a>
+    <a href="add_blog.php">Crea tu Blog</a>
     <a href="index.php#contactame">Contacto</a>
     <a class="btn" href="controlador/cerrarsesion.php">Salir</a>
 </nav>

@@ -34,8 +34,8 @@ $data = mysqli_fetch_assoc($result);
     <div class="detailsBlog">
 
         <div class="updatePost">
-            <a href="update_post.php?post_id=<?php echo $data['id']; ?>">Actualiza tu post</a> /
-            <a href="delete_post.php?post_id=<?php echo $data['id']; ?>">Elimina tu post</a><br>
+            <a href="controlador/update_post.php?post_id=<?php echo $data['id']; ?>">Actualiza tu post</a> /
+            <a href="controlador/delete_post.php?post_id=<?php echo $data['id']; ?>">Elimina tu post</a><br>
 
         </div>
         <br>
@@ -100,7 +100,7 @@ $data = mysqli_fetch_assoc($result);
                 $.ajax({
                     type: "POST",
                     //Aqui se procesará los comentarios para guardarse en la base de datos
-                    url: "guardar_comentario.php",
+                    url: "controlador/guardar_comentario.php",
                     data: $(this).serialize(),
                     dataType: "json",
                     success: function(response) {
@@ -133,7 +133,7 @@ $data = mysqli_fetch_assoc($result);
 
     <?php include('particiones/footer.php'); ?>
     <div id="subirboton"> <i class="fa fa-chevron-circle-up fa-3x"></i> </div>
-    <script src="js/main.js"></script>
+    <script src="js/boton_subir.js"></script>
 
 </body>
 
