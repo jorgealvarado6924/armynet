@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('conexion.php');
+include('database/conexion.php');
 
 // Verifica sesión
 if (!isset($_SESSION['user_id'])) {

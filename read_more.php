@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("conexion.php");
+include("database/conexion.php");
 $getId = intval($_GET['post_id']);
 $result = mysqli_query($conexion, "select p.*, u.name as author_name from posts p left join users u on p.author_id = u.id where p.id = $getId");
 

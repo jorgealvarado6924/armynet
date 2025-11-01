@@ -1,5 +1,5 @@
 <?php
-include('conexion.php');
+include('database/conexion.php');
 include("controlador/controlador_login.php");
 ?>
 <!DOCTYPE html>

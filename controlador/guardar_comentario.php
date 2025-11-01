@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('conexion.php');
+include('database/conexion.php');
 
 if (isset($_POST['user_name']) && isset($_POST['message']) && isset($_POST['post_id'])) {
     $user_name = mysqli_real_escape_string($conexion, $_POST['user_name']);

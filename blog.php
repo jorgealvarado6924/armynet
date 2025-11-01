@@ -1,5 +1,5 @@
 <?php
-include('conexion.php');
+include('database/conexion.php');
 session_start();
 ?>
 <!DOCTYPE html>

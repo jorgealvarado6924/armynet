@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("conexion.php");
+include("database/conexion.php");
 if (isset($_POST["btningresar"])) {
     $usuario = $_POST['usuario'];
     $password = $_POST['password'];

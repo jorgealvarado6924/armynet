@@ -1,6 +1,6 @@
 <?php
 // Incluir la conexión a la base de datos
-include('conexion.php');
+include('database/conexion.php');
 
 // Iniciar sesión si no está iniciada
 if (session_status() === PHP_SESSION_NONE) {
@@ -13,6 +13,7 @@ if (!empty($_SESSION["user_id"])) {
    exit;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('conexion.php');
+include('database/conexion.php');
 
 // Verificar que el usuario esté logueado
 if (empty($_SESSION["user_id"])) {
