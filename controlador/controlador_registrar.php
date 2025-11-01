@@ -24,6 +24,9 @@ if (isset($_POST['register'])) {
     $rol      = $_POST['rol'];
     $clave    = $_POST['password'];
 
+    // Encriptar contraseña con BCRYPT
+    $password_hash = password_hash($clave, PASSWORD_BCRYPT);
+
     // Verificar si ya existe usuario o email
     $checkUser = $conexion->query("SELECT * FROM users WHERE usuario='$usuario' OR email='$email'");
     if ($checkUser && $checkUser->num_rows > 0) {
@@ -32,7 +35,7 @@ if (isset($_POST['register'])) {
         exit;
     }
     $sql = $conexion->query("insert into users (name, apellido, email, usuario, password, rol)
-                             values ('$nombre', '$apellido', '$email', '$usuario', '$clave', '$rol')");
+                             values ('$nombre', '$apellido', '$email', '$usuario', '$password_hash', '$rol')");
 
     if ($sql) {
         session_start();
