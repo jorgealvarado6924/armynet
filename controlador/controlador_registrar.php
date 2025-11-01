@@ -1,6 +1,5 @@
 <?php
-//Este método sivre para que encuentre el archivo donde sea que este su carpeta
-include(__DIR__ . "/../conexion.php");
+include("database/conexion.php");
 
 if (!empty($_SESSION["user_id"])) {
     header("Location: ../index.php");
