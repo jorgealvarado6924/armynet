@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('database/conexion.php');
+include('../database/conexion.php');
 
 // Verificar que el usuario esté logueado
 if (empty($_SESSION["user_id"])) {
@@ -38,7 +38,7 @@ $delete = mysqli_query($conexion, "DELETE FROM posts WHERE id = $post_id");
 if ($delete) {
     echo "<script>
         alert('✅ Post eliminado correctamente');
-        window.location.href = 'index.php';
+        window.location.href = '../index.php';
     </script>";
 } else {
     echo "<script>

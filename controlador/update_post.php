@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('database/conexion.php');
+include('../database/conexion.php');
 
 // Verifica sesión
 if (!isset($_SESSION['user_id'])) {
@@ -80,10 +80,10 @@ if (isset($_POST['submit'])) {
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <?php include('particiones/head.php'); ?>
+    <?php include('../particiones/head.php'); ?>
 </head>
 <body>
-    <?php include('particiones/navbar.php'); ?>
+    <?php include('../particiones/navbar.php'); ?>
 
     <section class="createPost">
         
@@ -127,6 +127,6 @@ if (isset($_POST['submit'])) {
         </form>
     </section>
 
-    <?php include('particiones/footer.php'); ?>
+    <?php include('../particiones/footer.php'); ?>
 </body>
 </html>
