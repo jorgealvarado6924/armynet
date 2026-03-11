@@ -2,27 +2,33 @@
 session_start();
 include("database/conexion.php");
 if (isset($_POST["btningresar"])) {
-    $usuario = $_POST['usuario'];
-    $password = $_POST['password'];
+    $usuario = trim($_POST['usuario'] ?? '');
+    $password = $_POST['password'] ?? '';
 
-    $sql = "select * from users where usuario='$usuario' ";
-    $result = mysqli_query($conexion, $sql);
-    if (!$result) {
+    $stmt = $conexion->prepare("SELECT id, name, rol, password FROM users WHERE usuario = ? LIMIT 1");
+    if (!$stmt) {
         echo "Error!: {$conexion->error}";
     } else {
-        if ($result-> num_rows > 0) {
+        $stmt->bind_param("s", $usuario);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result && $result->num_rows > 0) {
             $row = mysqli_fetch_assoc($result);
 
-            $_SESSION['user_id'] = $row['id'];
-            $_SESSION['user_name'] = $row['name'];
-            $_SESSION['user_rol'] = $row['rol'];
-            header("location: index.php");
-            // guardar contraseñas encriptadas 
-            $password_hash = password_hash($password, PASSWORD_BCRYPT);
+            if (password_verify($password, $row['password'])) {
+                $_SESSION['user_id'] = $row['id'];
+                $_SESSION['user_name'] = $row['name'];
+                $_SESSION['user_rol'] = $row['rol'];
+                header("location: index.php");
+                exit;
+            }
+
+            echo "<div class='alerta-error'> Contraseña incorrecta <div>";
 
         } else {
 echo "<div class='alerta-error'> Contraseña incorrecta <div>";            
         } 
+        $stmt->close();
     }
 }
 
