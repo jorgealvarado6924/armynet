@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("database/conexion.php");
 
 if (!empty($_SESSION["user_id"])) {
@@ -6,45 +7,59 @@ if (!empty($_SESSION["user_id"])) {
     exit;
 }
 
-// Procesar formulario
 if (isset($_POST['register'])) {
-
-    // Validar campos
     if (empty($_POST['name']) || empty($_POST['apellido']) || empty($_POST['email']) || empty($_POST['usuario']) || empty($_POST['password']) || empty($_POST['rol'])) {
         $_SESSION['error'] = "Rellena todos los campos";
         header("Location: ../registro.php");
         exit;
     }
 
-    // Preparar datos
-    $nombre   = $_POST['name'];
-    $apellido = $_POST['apellido'];
-    $email    = $_POST['email'];
-    $usuario  = $_POST['usuario'];
-    $rol      = $_POST['rol'];
-    $clave    = $_POST['password'];
+    $nombre = trim($_POST['name']);
+    $apellido = trim($_POST['apellido']);
+    $email = trim($_POST['email']);
+    $usuario = trim($_POST['usuario']);
+    $rol = trim($_POST['rol']);
+    $clave = $_POST['password'];
 
-    // Encriptar contraseña con BCRYPT
     $password_hash = password_hash($clave, PASSWORD_BCRYPT);
 
-    // Verificar si ya existe usuario o email
-    $checkUser = $conexion->query("SELECT * FROM users WHERE usuario='$usuario' OR email='$email'");
-    if ($checkUser && $checkUser->num_rows > 0) {
-        $_SESSION['error'] = "El usuario o correo ya están registrados";
+    $checkUser = $conexion->prepare("SELECT id FROM users WHERE usuario = ? OR email = ? LIMIT 1");
+    if (!$checkUser) {
+        $_SESSION['error'] = "Error al validar el usuario";
         header("Location: ../registro.php");
         exit;
     }
-    $sql = $conexion->query("insert into users (name, apellido, email, usuario, password, rol)
-                             values ('$nombre', '$apellido', '$email', '$usuario', '$password_hash', '$rol')");
 
-    if ($sql) {
-        session_start();
+    $checkUser->bind_param("ss", $usuario, $email);
+    $checkUser->execute();
+    $existingUser = $checkUser->get_result();
+
+    if ($existingUser && $existingUser->num_rows > 0) {
+        $_SESSION['error'] = "El usuario o correo ya están registrados";
+        $checkUser->close();
+        header("Location: ../registro.php");
+        exit;
+    }
+    $checkUser->close();
+
+    $insertUser = $conexion->prepare("INSERT INTO users (name, apellido, email, usuario, password, rol) VALUES (?, ?, ?, ?, ?, ?)");
+    if (!$insertUser) {
+        $_SESSION['error'] = "Error al preparar el registro";
+        header("Location: ../registro.php");
+        exit;
+    }
+
+    $insertUser->bind_param("ssssss", $nombre, $apellido, $email, $usuario, $password_hash, $rol);
+
+    if ($insertUser->execute()) {
+        $insertUser->close();
         header("Location: ../index.php");
         exit;
-    } else {
-        $_SESSION['error'] = "Error al registrar el usuario";
-        header("Location: ../registro.php");
-        exit;
     }
+
+    $insertUser->close();
+    $_SESSION['error'] = "Error al registrar el usuario";
+    header("Location: ../registro.php");
+    exit;
 }
 ?>
