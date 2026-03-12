@@ -627,6 +627,29 @@ div #category{
     padding: 10px;
     display: flex;
     align-items: center;
+    position: relative;
+}
+
+.deleteCommentForm {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.deleteCommentBtn {
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 50%;
+    background: #8f8649;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.deleteCommentBtn:hover {
+    background: #5d562b;
 }
 
 .commentImg {

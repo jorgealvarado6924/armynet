@@ -1,50 +1,51 @@
 <?php
-session_start();
-include('../database/conexion.php');
+require_once __DIR__ . '/helpers.php';
+require_once __DIR__ . '/../database/conexion.php';
 
-// Verificar que el usuario esté logueado
-if (empty($_SESSION["user_id"])) {
-    header("location: login.php");
-    exit;
+$userId = require_role('author');
+$postId = (int) ($_GET['post_id'] ?? 0);
+
+if ($postId <= 0) {
+    redirect_to('blog.php');
 }
 
-$post_id = intval($_GET['post_id']);
-$user_id = intval($_SESSION['user_id']);
-$user_rol = $_SESSION['user_rol'] ?? '';
+$postStmt = $conexion->prepare('SELECT id, author_id FROM posts WHERE id = ? LIMIT 1');
+$postStmt->bind_param('i', $postId);
+$postStmt->execute();
+$postResult = $postStmt->get_result();
+$post = $postResult ? $postResult->fetch_assoc() : null;
+$postStmt->close();
 
-// Verificar que el post pertenece al usuario o que es admin
-$query = "SELECT * FROM posts WHERE id = $post_id";
-$result = mysqli_query($conexion, $query);
-$post = mysqli_fetch_assoc($result);
-
-
-if ($post['author_id'] != $user_id && $user_rol == 'lector') {
-    echo "<p>No tienes permiso para eliminar este post</p>";
-    exit;
+if (!$post) {
+    redirect_to('blog.php');
 }
 
-$check = mysqli_query($conexion, "SELECT 1 FROM comments WHERE post_id = $post_id");
-if (mysqli_num_rows($check) > 0) {
-    echo "<script>
-        alert('No puedes eliminar este post porque tiene comentarios.');
-        window.history.back();
-    </script>";
-    exit;
+if ((int) $post['author_id'] !== $userId) {
+    exit('No tienes permiso para eliminar este post.');
 }
 
-// Eliminar el post
-$delete = mysqli_query($conexion, "DELETE FROM posts WHERE id = $post_id");
+mysqli_begin_transaction($conexion);
 
-if ($delete) {
-    echo "<script>
-        alert('✅ Post eliminado correctamente');
-        window.location.href = '../index.php';
-    </script>";
-} else {
-    echo "<script>
-        alert('❌ Error al eliminar el post');
-        window.history.back();
-    </script>";
+try {
+    $deleteCommentsStmt = $conexion->prepare('DELETE FROM comments WHERE post_id = ?');
+    $deleteCommentsStmt->bind_param('i', $postId);
+    $deleteCommentsStmt->execute();
+    $deleteCommentsStmt->close();
+
+    $deletePostStmt = $conexion->prepare('DELETE FROM posts WHERE id = ?');
+    $deletePostStmt->bind_param('i', $postId);
+    $deletePostStmt->execute();
+    $affectedRows = $deletePostStmt->affected_rows;
+    $deletePostStmt->close();
+
+    if ($affectedRows !== 1) {
+        throw new RuntimeException('No se pudo eliminar el post.');
+    }
+
+    mysqli_commit($conexion);
+} catch (Throwable $exception) {
+    mysqli_rollback($conexion);
+    exit('No se pudo eliminar el post.');
 }
-exit;
-?>
+
+redirect_to('blog.php');

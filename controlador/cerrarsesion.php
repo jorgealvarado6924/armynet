@@ -1,5 +1,8 @@
 <?php
-session_start();
+require_once __DIR__ . '/helpers.php';
+
+ensure_session_started();
+$_SESSION = [];
 session_destroy();
-header("location: ../login.php");
-?> 
+
+redirect_to('login.php');
